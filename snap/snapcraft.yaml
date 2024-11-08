@@ -1,0 +1,39 @@
+name: google-webdesigner-unofficial
+title: Google Web Designer (Unofficial)
+summary: Unofficial snap for Google Web Designer
+description: |
+  Google Web Designer gives you the power to create beautiful and compelling videos, images, and HTML5 ads. Use animation and interactive elements to build out your creative vision, then scale your content for different sizes or audiences with responsive and dynamic workflows.
+
+website: https://webdesigner.withgoogle.com
+contact: https://github.com/SalahuddinAhammed/google-webdesigner-unofficial-snap/issues
+issues: https://github.com/SalahuddinAhammed/google-webdesigner-unofficial-snap/issues
+source-code: https://github.com/SalahuddinAhammed/google-webdesigner-unofficial-snap
+license: Proprietary
+icon: snap/gui/google-webdesigner.png
+version: "16.1.0.0530"
+
+base: core22
+grade: stable
+confinement: strict
+compression: lzo
+
+architectures:
+  - amd64
+
+apps:
+  google-webdesigner:
+    command: opt/google/webdesigner/webdesigner
+    extensions: [gnome]
+    desktop: usr/share/applications/google-webdesigner.desktop
+    environment:
+      LD_LIBRARY_PATH: "$LD_LIBRARY_PATH:$SNAP/opt/google/webdesigner"
+    plugs:
+      - browser-support
+      - fuse-support
+      - home
+      - network
+
+parts:
+  google-webdesigner:
+    plugin: dump
+    source: https://dl.google.com/linux/direct/google-webdesigner_current_amd64.deb
